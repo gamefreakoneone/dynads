@@ -28,6 +28,8 @@
   mocked only for this isolated observer/UI check; new-brand generation not rerun.
 
 ## Engineering rules
+- Preserve the existing ad flow. New cheer feature lives only at /cheer with its
+  own components, CSS module, observer, token route and tests. See CHEER.md.
 - Keep provider keys server-side. Preserve development session registry and cleanup wrapper.
 - Keep one model constant shared by token minting, provider, and registry.
 - Use model events for beats; first chunk can contain no frames.
@@ -87,6 +89,11 @@
 - Final typecheck and production build passed after the search configuration fix.
 
 ## References
+- Cheer feature validation: typecheck/build passed; six energy and stage tests
+  passed; real Gemini movement reports verified with prerecorded frames; browser
+  camera-denial/release, mobile and original page checks passed. Orbis connection
+  returned HTTP 429 no available capacity on two attempts; generated cheer
+  animation remains unverified. Do not claim the full cheer loop ran live.
 - https://www.reactor.inc/models/visko-orbis-dynamic/api
 - https://docs.reactor.inc/concepts/recordings
 - https://aistudio.google.com/docs/live-api/ephemeral-tokens
