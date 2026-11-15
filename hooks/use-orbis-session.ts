@@ -243,12 +243,15 @@ export function useOrbisSession(
   const startGeneration = async (
     startImage: File | null,
     runPrompt: string,
+    signal?: AbortSignal,
   ) => {
+    signal?.throwIfAborted();
     if (!runPrompt.trim()) throw new Error("Enter a prompt before starting.");
     expectsImageForRun.current = Boolean(startImage);
 
     if (startImage) {
       const uploaded = await uploadFile(startImage, { name: startImage.name });
+      signal?.throwIfAborted();
       const imageReady = waitForSignal(imageReadyResolver, "state.has_image");
       const rawReply = await sendCommand("set_image", { image: uploaded });
       if (!rawReply) {
@@ -269,6 +272,7 @@ export function useOrbisSession(
       }
 
       await imageReady.promise;
+      signal?.throwIfAborted();
 
       const dimensions =
         reply.width && reply.height ? ` (${reply.width}×${reply.height})` : "";
@@ -297,6 +301,7 @@ export function useOrbisSession(
     }
 
     await conditionsReady.promise;
+    signal?.throwIfAborted();
     setEvents((current) => ["conditions_ready", ...current].slice(0, 8));
     await sendCommand("start", {});
     setRunStarted(true);
@@ -377,6 +382,7 @@ export function useOrbisSession(
     selectImage,
     setResolution,
     startRun,
+    startGeneration,
     startFromNanoOutput,
     setNanoBusy,
     steer,

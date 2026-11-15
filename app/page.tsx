@@ -1,16 +1,16 @@
-import { OrbisDemo } from "@/components/orbis-demo";
+import { Dynads } from "@/components/dynads";
 
 export default function Home() {
   return (
     <main>
       <header>
-        <h1>Orbis starter</h1>
+        <span className="eyebrow">REAL-TIME SPORTS × GENERATIVE VIDEO</span>
+        <h1>dynads<span className="brand-dot">.</span></h1>
         <p>
-          Connect, generate a continuous live video, then steer it by changing
-          the prompt while it runs.
+          The game makes the moment. The moment makes the ad.
         </p>
       </header>
-      <OrbisDemo />
+      <Dynads />
     </main>
   );
 }

@@ -15,7 +15,8 @@ what happens next.
 
 Describe concrete visual content in present tense. Preserve the visible scene
 while clearly describing the requested action, natural subject motion,
-environmental motion, and camera framing. The camera should be holding steady.
+environmental motion, and camera framing. Follow the requested camera movement;
+hold steady only when no camera movement is requested.
 Keep important subjects and actions clearly visible. Prefer specific visual 
 language over vague adjectives, hedging, or meta-language such as "the image shows."
 

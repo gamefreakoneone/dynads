@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { ORBIS_MODEL_NAME as MODEL_NAME } from "@/lib/orbis";
 
 import {
   registerReactorSession,
@@ -8,7 +9,6 @@ import {
 export const runtime = "nodejs";
 
 const REACTOR_API_URL = "https://api.reactor.inc";
-const MODEL_NAME = "reactor/visko-orbis-stable";
 
 type RegistryRequest = {
   sessionId?: unknown;
@@ -83,7 +83,7 @@ export async function POST(request: Request) {
     session.state?.toUpperCase() === "CLOSED"
   ) {
     return NextResponse.json(
-      { error: "Session is not an active Orbis Stable session" },
+      { error: "Session is not an active Orbis Dynamic session" },
       { status: 400 },
     );
   }

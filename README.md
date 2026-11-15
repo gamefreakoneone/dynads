@@ -1,4 +1,46 @@
-# Orbis hackathon starter!
+# Dynads — timed sports ad demo
+
+Run `npm ci`, configure `REACTOR_API_KEY` and `GEMINI_API_KEY` in `.env.local`,
+then run `npm run dev` and open http://localhost:3000 in desktop Chrome or Edge.
+The development command retains the starter's session-cleanup wrapper.
+
+Click **Start demo**. The supplied match plays normally, captures jersey 8 at
+31 seconds, and generates a fresh two-beat Coca-Cola scene in Orbis Dynamic.
+At 47 seconds the match pauses until the generated recording is ready. The ad
+plays with a readable slogan overlay, then the match resumes from 47 seconds.
+The source briefly seeks backward to exactly 31 seconds at capture; no future
+frames are read. **F** forces a current-frame capture for stage debugging.
+
+Gemini Live observes one current frame per second and logs validated
+`trigger_ad` calls. It does not control insertion in this version. The sponsor
+mapping is illustrative, not evidence of a real endorsement. Model outputs
+can vary; the original manual controls remain under **Debug controls**.
+
+The **Agent activity** trace shows actual observation, detection, jersey-to-player
+mapping, sponsor lookup, frame capture, generation, and broadcast return events.
+After Gemini reports South Africa #8, `/api/sponsors` performs a Google
+Search-grounded lookup of the team's 2010 sponsorships. If detection has not
+arrived, the 31-second cue starts that lookup and explicitly labels its origin.
+Expand **View sponsor research & sources** for the summary, citations, queries,
+and Google Search suggestions. Lookup errors are visible and do not block the ad.
+The requested Coca-Cola campaign remains configured; research distinguishes
+team sponsorship from tournament sponsorship and does not imply endorsement.
+
+The browser records the live WebRTC tracks after the first decoded frame.
+Reactor's recording API is a fallback if local recording is unavailable; live
+testing found archive assembly too slow for the primary demo path. No generated
+clip is bundled or reused between runs. This version does not export a combined
+match/ad MP4. The capture can be saved from the reference preview.
+
+The HUD reports elapsed time since capture (including the deliberate wait at
+47 seconds), prompt preparation, first frame, recording readiness, insertion,
+and return. Failures expose **Retry ad** and **Continue match**. Restart reloads
+the page, triggering session cleanup and clearing all temporary media.
+
+Run `npm run typecheck` and `npm run build` to validate changes. See `AGENTS.md`
+for implementation progress, decisions, and live verification results.
+
+## Original starter reference
 
 A minimal Next.js example for the public Reactor-hosted Visko Orbis Stable API.
 It demonstrates server-side token minting, WebRTC video and audio, text-to-video,

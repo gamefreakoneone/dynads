@@ -1,4 +1,4 @@
-export const ORBIS_MODEL_NAME = "reactor/visko-orbis-stable";
+export const ORBIS_MODEL_NAME = "reactor/visko-orbis-dynamic";
 
 export const ORBIS_TRACKS = [
   { name: "main_video", kind: "video", direction: "recvonly" },

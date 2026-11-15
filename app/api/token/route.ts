@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
+import { ORBIS_MODEL_NAME as MODEL_NAME } from "@/lib/orbis";
 
 const REACTOR_API_URL = "https://api.reactor.inc";
-const MODEL_NAME = "reactor/visko-orbis-stable";
 
 export async function POST() {
   const apiKey = process.env.REACTOR_API_KEY;
